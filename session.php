@@ -21,7 +21,7 @@ function on_session_read($key) {
     $stmt .= "AND session_expiration > date_add(now(), interval 0 hour)";
     $sth  = mysql_query($stmt) or die(mysql_error());
 
-    echo $stmt;
+    //echo $stmt;
 
     if ($sth) {
         $row = mysql_fetch_array($sth);
@@ -36,7 +36,7 @@ function on_session_write($key, $val) {
 
     $val         = addslashes($val);
     $insert_stmt = "REPLACE INTO sessions VALUES ('$key', '$val', date_add(now(), interval 1 hour))";
-    echo $insert_stmt;
+    //echo $insert_stmt;
 
     return mysql_query($insert_stmt) or die(mysql_error());
 }
